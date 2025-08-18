@@ -1,16 +1,3 @@
----
-title: Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models
-author: Kurtland Chua, Roberto Calandra, Rowan McAllister, Sergey Levine
-published: NeurIPS 2018
-created: 2025-08-13 16:25
-status: 
-category: 
-tags:
-  - Model-Based-RL
-  - Constrained-RL
----
-
-
 ## The Purpose of This Study
 
 #### Abstract
@@ -58,7 +45,7 @@ Because we desire effective learning in both low-data regimes (at the beginning)
 - Bayesian nonparametric models(e.g., Gaussian processes) are often the model of choice in low-dimensional problems where data efficiency is critical. However, such model introduce additional assumptions(smoothness assumption) on the system.
 - Parametric function approximators(e.g., Neural networks) have constant-time inference(unlike Gaussian processes) and tractable training in the large data regime, and have the potential to represent more complex functions, including non smooth dynamics that are often present in robotics. However, most works that use NNs focus on deterministic models, consequently suffering from overfitting in the early stages of learning.
 
-For this reason(overfitting issue in deterministic NN models), our approach is able to achieve even higher data-efficiency than prior deterministic MBRL methods such as [[Neural network dynamics for model-based deep reinforcement learning with model-free ﬁne-tuning]].
+For this reason(overfitting issue in deterministic NN models), our approach is able to achieve even higher data-efficiency than prior deterministic MBRL methods such as [[🇺🇸 Neural network dynamics for model-based deep reinforcement learning with model-free ﬁne-tuning]].
 
 
 ### 3. Model-based reinforcement learning
@@ -135,9 +122,9 @@ Alternatively, we can plan and optimize for a sequence of actions, a process cal
 At each time step $t$, the MPC controller applies the firzst action $a_t$ of the sequence of optimized actions  $\arg\max_{a_{t:t + T}} \sum^{t + T}_{\tau = t} \mathbb{E}_{\tilde{f}}[r(s_\tau, a_\tau)]$.
 
 A common technique to compute the optimal action sequence is a random sampling shooting method.
-[[Neural network dynamics for model-based deep reinforcement learning with model-free ﬁne-tuning]] use deterministic NN models and MPC with random shooting to achieve data efficient control in higher dimensional tasks than what is feasible for GPs to model.
+[[🇺🇸 Neural network dynamics for model-based deep reinforcement learning with model-free ﬁne-tuning]] use deterministic NN models and MPC with random shooting to achieve data efficient control in higher dimensional tasks than what is feasible for GPs to model.
 
-Our work improves upon [[Neural network dynamics for model-based deep reinforcement learning with model-free ﬁne-tuning]]'s data efficiency in two ways:
+Our work improves upon [[🇺🇸 Neural network dynamics for model-based deep reinforcement learning with model-free ﬁne-tuning]]'s data efficiency in two ways:
 1. We capture uncertainty in modeling and planning, to prevent overfitting in the low-data regime.
 2. We use CEM instead of random-shooting, which samples actions from a distribution closer to previous action samples that yield high reward.
 
@@ -160,7 +147,7 @@ We found $P = 20$(number of particles) and $B = 5$(number of bootstrap models) s
 
 ### 6. Algorithm summary
 
-![image](imgs/algorithm.png)
+![image](Paper-Reviews/Deep%20Reinforcement%20Learning%20in%20a%20Handful%20of%20Trials%20using%20Probabilistic%20Dynamics%20Models/imgs/algorithm.png)
 
 
 ### Appendix
@@ -189,5 +176,3 @@ We compare to the cross-entropy method (CEM), which iteratively samples solution
 3. Our results indicate that the gap in asymptotic performance between model-based and model-free reinforcement learning can, at least in part, be bridged by incorporating uncertainty estimation into the model learning process.
 4. A compelling alternative class of methods uses the model to train a parameterized policy.
 5. A promising direction for future work is investigate how policy learning can be incorporated into our framework to amortize the cost of planning at test-time. (Our initial experiments with policy learning did not yield an effective algorithm by directly propagating gradients through our uncertainty-aware models. We believe this may be due to chaotic policy gradients.)
-
-## Critique

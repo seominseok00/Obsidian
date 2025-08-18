@@ -1,14 +1,13 @@
----
-title: Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models
-author: Kurtland Chua, Roberto Calandra, Rowan McAllister, Sergey Levine
-published: NeurIPS 2018
-created: 2025-08-13 16:25
-status: 
-category: 
-tags:
-  - Model-Based-RL
-  - Constrained-RL
----
+### 5. Planning and control with learned dynamics
+
+CEM(Cross Entropy Method)란?
+
+[The Cross-Entropy Method for Optimization](https://people.smp.uq.edu.au/DirkKroese/ps/CEopt.pdf)
+
+MPC는 현재 상태에서 길이 $T$의 action sequences를 최적화해 첫 번째 행동만 실행하고, 다음 스텝에서 다시 최적화하는 프레임워크
+
+이 최적화 문제를 풀기 위한 optimizer가 CEM
+
 #### 5.1 Our state propagation method: trajectory sampling (TS)
 
 1. Trajectory multimodality, Particle separation이 뭔지?
