@@ -104,3 +104,9 @@ The batch size is 256, the learning rate is 0.001, the training epochs are 70, a
 The ensemble number is 4 for Point robot tasks and is 5 for Car robot tasks.
 
 Each neural network model in the ensemble is trained with 80% of the training data to prevent overfitting.
+
+## Cited By
+
+[[🇺🇸 Model-based Safe Deep Reinforcement Learning via a Constrained Proximal Policy Optimization Algorithm]]
+ A model based approach is proposed to learn the system dynamics and cost model.
+Then roll-outs from the learned model are used to optimize the policy using a modified cross-entropy based method which involves sampling from a distribution of policies, sorting sample policies based on constraint functions and using them to update the policy distribution.
