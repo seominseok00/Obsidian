@@ -71,16 +71,6 @@ The entire training pipeline of our MPC with RCE is presented in Algorithm 2.
 
 ![image](algorithm2.png)
 
-## Results & Discussion
-
-### 3. Experiment Validation
-
-![image](results.png)
-
-Fig. 2 shows the learning curves of reward and constraint violation cost.
-
-From the figure, it is apparent that our MPC-RCE approach learns the underlying constraint function very quickly to avoid unsafe behaviors during the exploration and achieves the lowest constraint violation rate, through its reward is slightly lower than other methods. (It is reasonable because the best policy to maximize the task reward is to ignore the constraints.)
-
 ### Appendix
 
 #### A.1 Discussion about the Safety Gym environment and the task setting
@@ -104,6 +94,16 @@ The batch size is 256, the learning rate is 0.001, the training epochs are 70, a
 The ensemble number is 4 for Point robot tasks and is 5 for Car robot tasks.
 
 Each neural network model in the ensemble is trained with 80% of the training data to prevent overfitting.
+
+## Results & Discussion
+
+### 3. Experiment Validation
+
+![image](results.png)
+
+Fig. 2 shows the learning curves of reward and constraint violation cost.
+
+From the figure, it is apparent that our MPC-RCE approach learns the underlying constraint function very quickly to avoid unsafe behaviors during the exploration and achieves the lowest constraint violation rate, through its reward is slightly lower than other methods. (It is reasonable because the best policy to maximize the task reward is to ignore the constraints.)
 
 ## Cited By
 

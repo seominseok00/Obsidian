@@ -111,7 +111,7 @@ We propose a hyperparameter-based approach to deal with this problem in the [[#5
 
 ### 5. Model-based PPO Lagrangian
 
-![image](algorithm.png)
+![image](Paper-Reviews/Constrained%20RL/Model-Based/Model-based%20Safe%20Deep%20Reinforcement%20Learning%20via%20a%20Constrained%20Proximal%20Policy%20Optimization%20Algorithm/imgs/algorithm.png)
 
 It is difficult to evaluate the policy without interacting with the real environment accurately.
 
@@ -138,18 +138,43 @@ The variation of expected cost returns and reward returns with respect to $\beta
 
 ![image](fig1.png)
 
+
+### Appendix
+
+#### A. Hyper-parameters and finer experimental details
+
+![image](hyperparameters.png)
+
+
 ## Results & Discussion
 
 ### 6. Experimental Details and Results
 
-We test our approach on Safety Gym environments with modified state representations as used in other model-based Safe RL approaches [[🇺🇸 Safe Model-Based Reinforcement Learning with Robust Cross-Entropy Method]]
+We test our approach on Safety Gym environments with modified state representations as used in other model-based Safe RL approaches [[🇺🇸 Safe Model-Based Reinforcement Learning with Robust Cross-Entropy Method]].
+
+We increase the difficulty of PointGoal and CarGoal environments by increasing the number of hazards from 10 to 15.
 
 We compare our approach(MBPPO-Lagrangian) with Unconstrained PPO, Constrained Policy Optimization(CPO), PPO-Lagrangian, safe-LOOP(model-based approach)
 
+We use [rliable](https://github.com/google-research/rliable) for plotting.
+
 ### 7. Conclusions
 
-In safe-LOOP, approximation of the value function is used to provide long-term reasoning instead of using a truncated horiozn.
+Note that we chose the above baselines because they are specifically designed to solve a constrained optimization problem of the same structure as (1)-(3).
 
+In safe-LOOP, approximation of the value function is used to provide long-term reasoning instead of using a truncated horizon.
+A limitation of this approach lies in the fact that approximations of reward and cost value functions are used.
+
+The most challenging part of model-based approaches is to learn the environment model.
+
+1. The first issue is of computational resources and the time overhead that is needed. (Our algorithm does much better than safe-LOOP in terms of running time.)
+2. In safe exploration settings, agents do not explore as much as an unconstrained agent would do. This adds to the complexity of model learning. (We found this more pronounced in high-dimensional environments like DoggoGoal1.)
+
+**Future works**
+
+- Increasing reward performance of Lagrangian-based approaches.
+- Devising better ways for model-learning in high-dimensional state representations in safe RL settings where exploration is limited.
+- Adapt off-policy natrual actor-critic algorithms such as in the setting of constrained MDPs and study their performance both theoretically and epirically.
 
 
 ## Critique
