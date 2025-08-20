@@ -61,7 +61,7 @@ where $s^b_{t + 1} = \tilde{f}_{\theta_b}(s^b_t, a_t), \forall t \in \{0, \ldots
 The intuition of TS is to consider the worst-case scenario of constraint violations among all sampled future trajectories with dynamics prediction uncertainty.
 
 
-![image](imgs/algorithm1.png)
+![image](algorithm1.png)
 
 1. Our RCE methods first selects the feasible set of solutions that satisfy the constraints based on the estimated cost in Eq. 2.
 2. We sort the solutions in the feasible set and select the top $k$ samples to use when calculating the parameters of the sampling distribution for the next iteration.
@@ -69,13 +69,13 @@ The intuition of TS is to consider the worst-case scenario of constraint violati
 
 The entire training pipeline of our MPC with RCE is presented in Algorithm 2.
 
-![image](imgs/algorithm2.png)
+![image](algorithm2.png)
 
 ## Results & Discussion
 
 ### 3. Experiment Validation
 
-![image](imgs/results.png)
+![image](results.png)
 
 Fig. 2 shows the learning curves of reward and constraint violation cost.
 

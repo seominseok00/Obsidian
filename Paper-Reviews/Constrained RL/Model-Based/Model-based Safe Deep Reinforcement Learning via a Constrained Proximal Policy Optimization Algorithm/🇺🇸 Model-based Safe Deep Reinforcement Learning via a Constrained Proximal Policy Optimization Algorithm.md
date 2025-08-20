@@ -111,7 +111,7 @@ We propose a hyperparameter-based approach to deal with this problem in the [[#5
 
 ### 5. Model-based PPO Lagrangian
 
-![image](imgs/algorithm.png)
+![image](algorithm.png)
 
 It is difficult to evaluate the policy without interacting with the real environment accurately.
 
@@ -136,7 +136,7 @@ $$
 
 The variation of expected cost returns and reward returns with respect to $\beta$ is shown in Figure 1.
 
-![image](imgs/fig1.png)
+![image](fig1.png)
 
 ## Results & Discussion
 

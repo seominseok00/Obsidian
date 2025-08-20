@@ -147,7 +147,7 @@ We found $P = 20$(number of particles) and $B = 5$(number of bootstrap models) s
 
 ### 6. Algorithm summary
 
-![image](Paper-Reviews/Deep%20Reinforcement%20Learning%20in%20a%20Handful%20of%20Trials%20using%20Probabilistic%20Dynamics%20Models/imgs/algorithm.png)
+![image](algorithm.png)
 
 
 ### Appendix
