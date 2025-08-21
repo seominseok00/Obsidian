@@ -8,6 +8,7 @@ This is especially true with high-capacity parametric function approximators, su
 
 In this paper, we study how to bridge this gap, by employing uncertainty-aware dynamics models.
 
+We propose a new algorithm called probabilistic ensembles with trajectory sampling (PETS) that combines uncertainty-aware deep network dynamcis models with sampling-based uncertainty propagation.
 
 ### 1. Introduction
 

@@ -27,19 +27,19 @@ We propose a simple and sample efficient model-based approach for Safe Reinforce
 ### 2. Related Work
 
 - Model-free RL
-In more recent, in [[📌 Constrained Policy Optimization]], a trust region based constrained policy optimization (CPO) framework is proposed, which involved approximation of the problem using surrogate functions for both the objective and the constraints and included a projection step on policy parameters that needed backtracking line search, making it complicated and time-consuming.
+In more recent, in [[📚 Constrained Policy Optimization]], a trust region based constrained policy optimization (CPO) framework is proposed, which involved approximation of the problem using surrogate functions for both the objective and the constraints and included a projection step on policy parameters that needed backtracking line search, making it complicated and time-consuming.
 
-In [[📌 Benchmarking safe exploration in deep reinforcement learning]], Lagrangian relaxation of the Constrained RL problem is used and combined with PPO to give a PPO-Lagrangian algorithm.
+In [[📝 Benchmarking safe exploration in deep reinforcement learning]], Lagrangian relaxation of the Constrained RL problem is used and combined with PPO to give a PPO-Lagrangian algorithm.
 These algorithms were seen to outperform CPO in terms of constraint satisfaction on several environments in Safety Gym.
 Also, these algorithms are simpler to implement and tune.
 
-In [[📌 Safe exploration in continuous action spaces]], the authors formulated a state-wise constrained policy optimization problem where at each transition a constraint needs to be satisfied and an analytical method for correcting the unsafe action using a safety layer trained using random exploration was proposed.
+In [[📚 Safe exploration in continuous action spaces]], the authors formulated a state-wise constrained policy optimization problem where at each transition a constraint needs to be satisfied and an analytical method for correcting the unsafe action using a safety layer trained using random exploration was proposed.
 
 - Model-based RL
 In [[🇺🇸 Safe Model-Based Reinforcement Learning with Robust Cross-Entropy Method]], a model based approach is proposed to learn the system dynamics and cost model.
 Then roll-outs from the learned model are used to optimize the policy using a modified cross-entropy based method which involves sampling from a distribution of policies, sorting sample policies based on constraint functions and using them to update the policy distribution.
 
-In [[📌 Safe Reinforcement Learning by Imagining the Near Future]], penalized reward functions are used instead of a separate cost function, the model of the environment is learned and the soft-actor critic algorithm is used to optimize the policy.
+In [[📚 Safe Reinforcement Learning by Imagining the Near Future]], penalized reward functions are used instead of a separate cost function, the model of the environment is learned and the soft-actor critic algorithm is used to optimize the policy.
 
 
 ### 3. Background
@@ -115,7 +115,7 @@ We propose a hyperparameter-based approach to deal with this problem in the [[#5
 
 It is difficult to evaluate the policy without interacting with the real environment accurately.
 
-For this we compute the Performance Ratio (PR) metric using ensemble models (see [[📌 Model-ensemble trust-region policy optimization]]) that is defined as follows:
+For this we compute the Performance Ratio (PR) metric using ensemble models (see [[📚 Model-ensemble trust-region policy optimization]]) that is defined as follows:
 $$
 \text{PR} = \frac{1}{n} \sum^n_{i = 1} \mathbb{1}(\zeta^R(\alpha_i, \theta_t) > \zeta^R(\alpha_i, \theta_{t - 1}))
 $$

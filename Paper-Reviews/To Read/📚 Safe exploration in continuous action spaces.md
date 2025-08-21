@@ -1,3 +1,14 @@
+---
+title: Safe exploration in continuous action spaces
+author: Gal Dalal, Krishnamurthy Dvijotham, Matej Vecerik, Todd Hester, Cosmin Paduraru, Yuval Tassa
+published: arXiv 2018
+created: 2025-08-21 10:48
+status:
+category:
+tags:
+  - DeepMind
+---
+
 ## The Purpose of This Study
 
 

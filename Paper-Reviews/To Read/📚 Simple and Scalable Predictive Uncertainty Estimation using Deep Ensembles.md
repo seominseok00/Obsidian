@@ -1,10 +1,10 @@
 ---
-title: "📌 Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles"
-author: 
-published: 
-created: "2025-08-19 22:30"
-status: 
-category: 
+title: Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles
+author:
+published:
+created: 2025-08-19 22:30
+status:
+category:
 tags:
 ---
 
