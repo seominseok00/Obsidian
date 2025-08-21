@@ -1,3 +1,17 @@
+---
+title: Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models
+author: Kurtland Chua, Roberto Calandra, Rowan McAllister, Sergey Levine
+published: NeurIPS 2018
+created: 2025-08-18 15:13
+status: 
+category: 
+tags:
+  - Model-Based
+  - RL
+  - NeurIPS
+  - Sergey-Levine
+---
+
 ## The Purpose of This Study
 
 #### Abstract
@@ -46,8 +60,7 @@ Because we desire effective learning in both low-data regimes (at the beginning)
 - Bayesian nonparametric models(e.g., Gaussian processes) are often the model of choice in low-dimensional problems where data efficiency is critical. However, such model introduce additional assumptions(smoothness assumption) on the system.
 - Parametric function approximators(e.g., Neural networks) have constant-time inference(unlike Gaussian processes) and tractable training in the large data regime, and have the potential to represent more complex functions, including non smooth dynamics that are often present in robotics. However, most works that use NNs focus on deterministic models, consequently suffering from overfitting in the early stages of learning.
 
-For this reason(overfitting issue in deterministic NN models), our approach is able to achieve even higher data-efficiency than prior deterministic MBRL methods such as [[🇺🇸 Neural network dynamics for model-based deep reinforcement learning with model-free ﬁne-tuning]].
-
+For this reason(overfitting issue in deterministic NN models), our approach is able to achieve even higher data-efficiency than prior deterministic MBRL methods such as [[📚 Neural network dynamics for Model-Based Deep Reinforcement Learning with Model-Free Fine-Tuning]].
 
 ### 3. Model-based reinforcement learning
 
@@ -123,14 +136,17 @@ Alternatively, we can plan and optimize for a sequence of actions, a process cal
 At each time step $t$, the MPC controller applies the firzst action $a_t$ of the sequence of optimized actions  $\arg\max_{a_{t:t + T}} \sum^{t + T}_{\tau = t} \mathbb{E}_{\tilde{f}}[r(s_\tau, a_\tau)]$.
 
 A common technique to compute the optimal action sequence is a random sampling shooting method.
-[[🇺🇸 Neural network dynamics for model-based deep reinforcement learning with model-free ﬁne-tuning]] use deterministic NN models and MPC with random shooting to achieve data efficient control in higher dimensional tasks than what is feasible for GPs to model.
+[[📚 Neural network dynamics for Model-Based Deep Reinforcement Learning with Model-Free Fine-Tuning]] use deterministic NN models and MPC with random shooting to achieve data efficient control in higher dimensional tasks than what is feasible for GPs to model.
 
-Our work improves upon [[🇺🇸 Neural network dynamics for model-based deep reinforcement learning with model-free ﬁne-tuning]]'s data efficiency in two ways:
+Our work improves upon [[📚 Neural network dynamics for Model-Based Deep Reinforcement Learning with Model-Free Fine-Tuning]]'s data efficiency in two ways:
 1. We capture uncertainty in modeling and planning, to prevent overfitting in the low-data regime.
-2. We use CEM instead of random-shooting, which samples actions from a distribution closer to previous action samples that yield high reward.
+2. We use [CEM](https://people.smp.uq.edu.au/DirkKroese/ps/CEopt.pdf) instead of random-shooting, which samples actions from a distribution closer to previous action samples that yield high reward.
 
 Computing the expected reward using recursive state prediction in closed-form is generally intractable.
 Multiple approaches to approximate uncertainty propagation can be found in the literature. (deterministic, particle, parametric methods)
+- Deterministic methods use the mean prediction and ignore the uncertainty
+- Particle methods propagate a set of Monte Carlo samples
+- Parametric methods include Gaussian or Gaussian mixture models
 *Parametric methods have been successfully used in MBRL, experimental results suggest that particle approaches can be competitive both computationally and in terms of accuracy, without making strong assumptions about the distribution used.*
 We use particle-based propagation, specifically suited to our PE(Probabilistic Ensembles) dynamics models which distinguishes two types of uncertainty.
 

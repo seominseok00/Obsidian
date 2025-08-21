@@ -48,3 +48,12 @@ TS1은 모델별 편향이 시간에 따라 같은 방향으로 누적되는 것
 **holdout data란?**
 
 모델 학습시에 사용하지 않고 따로 떼어둔 평가용 데이터
+
+
+### 8. Discussion & Conclusion
+
+A promising direction for future work is investigate how policy learning can be incorporated into our framework to amortize the cost of planning at test-time.
+
+**Amortize란?**
+
+금융에서는 빚을 여러 달로 나눠서 갚다 (분할상환)라는 의미인데, 머신러닝에서는 매번 새로 계산해야 하는 작업을 학습된 함수로 대체해서 계산 비용을 줄인다는 의미로 쓰임
