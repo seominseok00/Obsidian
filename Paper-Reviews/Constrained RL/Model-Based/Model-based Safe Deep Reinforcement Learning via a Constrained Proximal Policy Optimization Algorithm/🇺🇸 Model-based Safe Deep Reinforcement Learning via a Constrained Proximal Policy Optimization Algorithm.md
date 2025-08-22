@@ -1,3 +1,17 @@
+---
+title: Model-based Safe Deep Reinforcement Learning via a Constrained Proximal Policy Optimization Algorithm
+author: Ashish Kumar Jayant, Shalabh Bhatnagar
+published: NeurIPS 2022
+created: 2025-08-19 14:07
+status: Summarized
+category:
+tags:
+  - Constrained-RL
+  - Model-Based
+  - NeurIPS
+github: https://github.com/akjayant/mbppol
+---
+
 ## The Purpose of This Study
 
 ### Abstract

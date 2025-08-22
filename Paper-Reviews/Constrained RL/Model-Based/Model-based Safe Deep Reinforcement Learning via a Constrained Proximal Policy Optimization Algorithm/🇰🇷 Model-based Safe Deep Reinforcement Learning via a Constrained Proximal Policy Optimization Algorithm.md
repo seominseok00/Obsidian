@@ -3,7 +3,7 @@ title: Model-based Safe Deep Reinforcement Learning via a Constrained Proximal P
 author: Ashish Kumar Jayant, Shalabh Bhatnagar
 published: NeurIPS 2022
 created: 2025-08-19 14:07
-status:
+status: Summarized
 category:
 tags:
   - Constrained-RL
