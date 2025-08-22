@@ -76,3 +76,21 @@ Each neural network's output parameterizes a multivariate normal distribution wi
 **네트워크의 출력은 하나의 평균, 분산(보통 가우시안 분포를 모데링하므로)을 출력하는거 아닌지?**
 
 환경의 다음 상태는 보통 다차원 벡터이므로, multivariate normal distribution을 모델링하는 듯
+
+
+#### Aggregation of Error
+
+In order to tackle this problem, most of the model-based RL approches use shorter (or truncated) horizon during the policy optimization phase.
+
+**Shorter horizon이랑 Truncated horizon이랑 무슨 차이?**
+
+truncated하면 마찬가지로 짧아지는거 아닌지?
+
+GPT의 답변:
+
+- Shorter horizon: planning 할 때, 짧은 horizon에 대해서만 계산하고 이를 기준으로 정책을 최적화
+- Truncated horizon: horizon $T$는 그대로 두고, rollout 중간에 이를 잘라서($T$ 이전 스텝에), 이후 스텝에 대해서는 value function으로 대체하는 것
+
+In  [safe-LOOP](https://arxiv.org/abs/2008.10066), approximation of the value function is used to provide long-term reasoning instead of using a truncated horizon.
+
+safe-LOOP에서는 truncated horizon 대신 value function을 사용한다고 하는데, truncated 방식의 설명이 저게 맞는지..?

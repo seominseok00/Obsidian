@@ -6,7 +6,7 @@ Safe exploration is a critical issue in applying RL algorithms in the real world
 
 We propose an On-policy Model-based Safe Deep RL algorithm in which we learn the transition dynamics of the environment in an online manner as well as find a feasible optimal policy using the Lagrangian Relaxation-based Proximal Policy Optimization.
 
-We use an ensemble of neural networks with different initializations to tackle epistemic and aleatoric uncertainty issues faced during environment model learning.We highlight the issue that arises due to the use of truncated horizon in Constrained RL and suggest a way to incorporate that in our setting.
+We use an ensemble of neural networks with different initializations to tackle epistemic and aleatoric uncertainty issues faced during environment model learning. We highlight the issue that arises due to the use of truncated horizon in Constrained RL and suggest a way to incorporate that in our setting.
 
 ### 1. Introduction
 
@@ -107,6 +107,8 @@ When we use truncated horizon in Constrained RL, it leads to underestimation of 
 This can lead to constraint violation in the real-environment where the cost objective is based on the infinite horizon cost return.
 
 We propose a hyperparameter-based approach to deal with this problem in the [[#5. Model-based PPO Lagrangian]]
+
+
 ## Methods
 
 ### 5. Model-based PPO Lagrangian
@@ -162,7 +164,7 @@ We use [rliable](https://github.com/google-research/rliable) for plotting.
 
 Note that we chose the above baselines because they are specifically designed to solve a constrained optimization problem of the same structure as (1)-(3).
 
-In safe-LOOP, approximation of the value function is used to provide long-term reasoning instead of using a truncated horizon.
+In  [safe-LOOP](https://arxiv.org/abs/2008.10066), approximation of the value function is used to provide long-term reasoning instead of using a truncated horizon.
 A limitation of this approach lies in the fact that approximations of reward and cost value functions are used.
 
 The most challenging part of model-based approaches is to learn the environment model.
@@ -174,7 +176,7 @@ The most challenging part of model-based approaches is to learn the environment 
 
 - Increasing reward performance of Lagrangian-based approaches.
 - Devising better ways for model-learning in high-dimensional state representations in safe RL settings where exploration is limited.
-- Adapt off-policy natrual actor-critic algorithms such as in the setting of constrained MDPs and study their performance both theoretically and epirically.
+- Adapt off-policy natrual actor-critic algorithms such as in the setting of constrained MDPs and study their performance both theoretically and empirically.
 
 
 ## Critique

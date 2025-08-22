@@ -3,8 +3,8 @@ title: Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dy
 author: Kurtland Chua, Roberto Calandra, Rowan McAllister, Sergey Levine
 published: NeurIPS 2018
 created: 2025-08-18 15:13
-status: 
-category: 
+status: Summarized
+category:
 tags:
   - Model-Based
   - RL
