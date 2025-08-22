@@ -3,7 +3,7 @@ title: Guided Safe Shooting (model based reinforcement learning with safety cons
 author: Giuseppe Paolo, Jonas Gonzalez-Billandon, Albert Thomas, Balazs Kegl
 published: arXiv 2022
 created: 2025-08-21 09:55
-status: Reading
+status: Summarized
 category:
 tags:
   - Constrained-RL
@@ -103,7 +103,7 @@ The space $\mathcal{B}$ is a hand-designed space in which the behavior of each p
 
 By maximizing the distance of the policies in this space, QD methods can generate a collection of highly diverse policies. (Note that the choice of $\mathcal{B}$ is fundamental and is dependent both on the environment and on the kind of task the agent has to solve in the environment.)
 
-The policies discovered during the search are then optimized with respect to the reward according to the reward according to different strategies depending on the algorithm1.png
+The policies discovered during the search are then optimized with respect to the reward according to the reward according to different strategies depending on the algorithm.
 
 ![image](imgs/algorithm2.png)
 
@@ -143,7 +143,7 @@ Both are neural nets, outputting parameters of Gaussian distributions, condition
 - DARMDN
 We learn $d_s$ auto-regressive deep neural nets, where $p_0(s^0_{t + 1}|s_t, a_t)$ and $p_l(s^l_{t + 1} | s^0_{t + 1}, \ldots, s^{l-1}_{t + 1}, s_t, a_t), l = 1, \ldots, d_{s - 1}$ outputting a scalar mean and standard deviation for each dimension of the state vector.
 
-- DARMDN
+- DMDN
 DMDN learns a single spherical $d_s$-dimensional Gaussian, outputting a mean vector and a standard deviation vector.
 
 We choose DARMDN for smaller dimensional systems and DMDN for SafeCar-Goal.
