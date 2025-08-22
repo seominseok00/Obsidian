@@ -4,7 +4,7 @@ author: Giuseppe Paolo, Jonas Gonzalez-Billandon, Albert Thomas, Balazs Kegl
 published: arXiv 2022
 created: 2025-08-19 10:03
 status: Summarized
-category:
+category: "4"
 tags:
   - Constrained-RL
   - Model-Based

@@ -1,3 +1,16 @@
+---
+title: Safe Model-Based Reinforcement Learning with Robust Cross-Entropy Method
+author: Zuxin Liu, Hongyi Zhou, Baiming Chen, Sicheng Zhong, Ding Zhao
+published: ICLR 2021
+created: 2025-08-18 16:58
+status: Read
+category:
+tags:
+  - Model-Based
+  - Constrained-RL
+  - ICLR
+---
+
 ## The Purpose of This Study
 
 ### Abstract
@@ -35,6 +48,8 @@ We adopt a LightGBM to learn the cost model.
 ### MPC with Learned Model-based
 
 We use Model Predictive Control(MPC) as the basic control framework for our constrained model-based RL approach.
+
+The objective of MPC is to maximize the accumulated reward w.r.t a sequence of actions $\mathcal{X} = (a_0, \ldots, a_T)$, where $T$ is the planning horizon.
 
 In our safe RL setting additional constraints are introduced so that the original objective becomes a constrained optimization problem.
 
