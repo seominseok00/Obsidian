@@ -9,11 +9,14 @@ tags:
   - Model-Based
   - Constrained-RL
   - ICLR
+url: https://arxiv.org/abs/2010.07968
+github: https://github.com/liuzuxin/safe-mbrl
+understanding: "4"
 ---
 
-## The Purpose of This Study
+## 1 The Purpose of This Study
 
-### Abstract
+### 1.1 Abstract
 
 We propose a model-based approach to enable RL agents to effectively explore the environment with unknown system dynamics and environment constraints given a significantly small number of violation budgets. (sparse indicator signals for constraint violations)
 
@@ -21,7 +24,7 @@ We employ the neural network ensemble model to estimate the prediction uncertain
 
 We propose the robust cross-entropy method to optimize the control sequence considering the model uncertainty and constraints.
 
-### 1. Introduction
+### 1.2 Introduction
 
 The observations of the robot are sensor data, so it is hard to analytically express the mapping from observation space to the constraint violation.
 Thus we are interested in the hardest cases where both dynamics and constraints are needed to be learned from data without additional info.
@@ -33,9 +36,9 @@ The challenges of solving the above problem are threefold:
 
 As far as we are aware, very little research has been done to investigate situations in which the dynamics and the constraint are both unknown.
 
-## Methods
+## 2 Methods
 
-### Model Learning
+### 2.1 Model Learning
 
 Since the dynamics $f(s_t, a_t)$ and the cost (constraint violation) model $c(s_{t + 1})$ are both unknown, we need to infer them from collected samples.
 
@@ -45,7 +48,7 @@ Any binary classification model could be used to approximate the cost model beca
 
 We adopt a LightGBM to learn the cost model.
 
-### MPC with Learned Model-based
+### 2.2 MPC with Learned Model-based
 
 We use Model Predictive Control(MPC) as the basic control framework for our constrained model-based RL approach.
 
@@ -58,19 +61,21 @@ $$
 &\mathcal{X} = \arg\max_{a_0, \ldots, a_T} \mathbb{E}\left[ \sum^T_{t = 0} \gamma^t r(s_{t + 1}) \right] \\
 &\text{s. t.} \; s_{t + 1} = f(s_t, a_t), c(s_{t + 1}) = 0, \quad \forall t \in \{0, 1, \ldots, T - 1\}
 \end{aligned}
-\tag{1}
 $$
 
+^5dd30d
 
-### Robust Cross-Entropy Method
 
-To directly solve the constrained optimization problem in  Eq. 1, we propose the robust cross-entropy method (RCE) by using the trajectory sampling (TS) technique ([[🇺🇸 Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models]]) to estimate reward and constraint violation cost.
+### 2.3 Robust Cross-Entropy Method
+
+To directly solve the constrained optimization problem in  Eq. [[#^5dd30d]] , we propose the robust cross-entropy method (RCE) by using the trajectory sampling (TS) technique ([[🇺🇸 Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models]]) to estimate reward and constraint violation cost.
 
 Given the initial state $s_0$, we can evaluate the accumulated reward and cost of the solution by:
 $$
 r(\mathcal{X};s_0) = \sum^T_{t = 0} \gamma^t \left(\frac{1}{B} \sum^B_{b = 1} r(s^b_{t + 1}) \right), \quad c(\mathcal{X};s_0) = \sum^T_{t = 0} \beta^t \max_b c(s^b_{t + 1})
-\tag{2}
 $$
+
+^f8b51d
 where $s^b_{t + 1} = \tilde{f}_{\theta_b}(s^b_t, a_t), \forall t \in \{0, \ldots, T - 1\}, \forall b \in \{1, \ldots, B\}$, $\gamma$ and $\beta$ are discounting factors, and $B$ is the ensemble size of the dynamics model.
 
 The intuition of TS is to consider the worst-case scenario of constraint violations among all sampled future trajectories with dynamics prediction uncertainty.
@@ -78,7 +83,7 @@ The intuition of TS is to consider the worst-case scenario of constraint violati
 
 ![image](algorithm1.png)
 
-1. Our RCE methods first selects the feasible set of solutions that satisfy the constraints based on the estimated cost in Eq. 2.
+1. Our RCE methods first selects the feasible set of solutions that satisfy the constraints based on the estimated cost in Eq. [[#^f8b51d]] .
 2. We sort the solutions in the feasible set and select the top $k$ samples to use when calculating the parameters of the sampling distribution for the next iteration.
 3. If all samples violate at least one constraint, we select the top $k$ samples with the lowest costs.
 
@@ -86,9 +91,9 @@ The entire training pipeline of our MPC with RCE is presented in Algorithm 2.
 
 ![image](algorithm2.png)
 
-### Appendix
+### 2.4 Appendix
 
-#### A.1 Discussion about the Safety Gym environment and the task setting
+#### 2.4.1 A.1 Discussion about the Safety Gym environment and the task setting
 
 The observation space used in our approach is different from the default Safety Gym options in that we pre-process the sensor data to get rid of some noisy and unstable sensor, such as the $z$-axis data of accelerometer.
 
@@ -96,9 +101,9 @@ We use the relative coordinates of the perceived objective instead of the pseudo
 
 We also performed careful hand-tuning of some MuJoCo actuator parameters.
 
-#### A.2 Training Detail
+#### 2.4.2 A.2 Training Detail
 
-##### Dynamic model
+##### 2.4.2.1 Dynamic model
 
 We use the same architecture and hyper-parameters of each neural network in the ensemble dynamics model.
 
@@ -110,9 +115,9 @@ The ensemble number is 4 for Point robot tasks and is 5 for Car robot tasks.
 
 Each neural network model in the ensemble is trained with 80% of the training data to prevent overfitting.
 
-## Results & Discussion
+## 3 Results & Discussion
 
-### 3. Experiment Validation
+### 3.1 Experiment Validation
 
 ![image](results.png)
 
@@ -120,7 +125,7 @@ Fig. 2 shows the learning curves of reward and constraint violation cost.
 
 From the figure, it is apparent that our MPC-RCE approach learns the underlying constraint function very quickly to avoid unsafe behaviors during the exploration and achieves the lowest constraint violation rate, through its reward is slightly lower than other methods. (It is reasonable because the best policy to maximize the task reward is to ignore the constraints.)
 
-## Cited By
+## 4 Cited By
 
 [[🇺🇸 Model-based Safe Deep Reinforcement Learning via a Constrained Proximal Policy Optimization Algorithm]]
  A model based approach is proposed to learn the system dynamics and cost model.

@@ -10,11 +10,12 @@ tags:
   - Model-Based
   - NeurIPS
 github: https://github.com/akjayant/mbppol
+url: https://arxiv.org/abs/2210.07573
 ---
 
-## The Purpose of This Study
+## 1 The Purpose of This Study
 
-### Abstract
+### 1.1 Abstract
 
 Safe exploration is a critical issue in applying RL algorithms in the real world.
 
@@ -22,7 +23,7 @@ We propose an On-policy Model-based Safe Deep RL algorithm in which we learn the
 
 We use an ensemble of neural networks with different initializations to tackle epistemic and aleatoric uncertainty issues faced during environment model learning. We highlight the issue that arises due to the use of truncated horizon in Constrained RL and suggest a way to incorporate that in our setting.
 
-### 1. Introduction
+### 1.2 Introduction
 
 In our work, we focus on a constrained-based notion of safety.
 
@@ -36,9 +37,9 @@ This serves as the motivation for us to use a Model-based approach for Constrain
 
 We propose a simple and sample efficient model-based approach for Safe Reinforcement Learning which uses Lagrangian relaxation to solve the constrained RL problem.
 
-## Lit. Review
+## 2 Lit. Review
 
-### 2. Related Work
+### 2.1 Related Work
 
 - Model-free RL
 In more recent, in [[📚 Constrained Policy Optimization]], a trust region based constrained policy optimization (CPO) framework is proposed, which involved approximation of the problem using surrogate functions for both the objective and the constraints and included a projection step on policy parameters that needed backtracking line search, making it complicated and time-consuming.
@@ -56,9 +57,9 @@ Then roll-outs from the learned model are used to optimize the policy using a mo
 In [[📚 Safe Reinforcement Learning by Imagining the Near Future]], penalized reward functions are used instead of a separate cost function, the model of the environment is learned and the soft-actor critic algorithm is used to optimize the policy.
 
 
-### 3. Background
+### 2.2 Background
 
-#### 3.3 Model-based Constrained RL
+#### 2.2.1 Model-based Constrained RL
 
 We formulate a constrained RL problem using a model-based framework as follows:
 $$
@@ -80,9 +81,9 @@ We assume the initial state $s_0$ is sampled from the true initial state distrib
 We would use approximation of environment $P_\alpha$ to create 'imaginary' roll-outs to estimate the reward and cost returns required for policy optimization algorithms.
 
 
-### 4. Challenges in Environment Model Learning
+### 2.3 Challenges in Environment Model Learning
 
-#### Handling aleatoric and epistemic uncertainties
+#### 2.3.1 Handling aleatoric and epistemic uncertainties
 
 `Aleatoric Uncertainty` refers to the notion of natural randomness in the system which leads to variability in outcomes of an experiment.
 
@@ -105,7 +106,7 @@ L(\alpha_i) = \sum^M_{t = 1}[\mu_{\alpha_i}(s_t, a_t) - s_{t + 1}]^T \sum^{-1}_{
 $$
 where $\mu_{\alpha_i}(s_t, a_t)$ is the mean vector output of the $i$th neural network and $\sum_{\alpha_i}(s_t, a_t)$ is the covariance matrix which is assumed to be a diagonal matrix.
 
-#### Aggregation of Error
+#### 2.3.2 Aggregation of Error
 
 In model-based RL, as we move forward along the horizon, the error due to approximation starts aggregating and predictions from the approximated model tend to diverge significantly from the true model.
 
@@ -114,7 +115,7 @@ In order to tackle this problem, most of the model-based RL approches use shorte
 We use truncated horizon in our approach.
 
 
-#### Implication of using truncated horizon in Constrained RL
+#### 2.3.3 Implication of using truncated horizon in Constrained RL
 
 When we use truncated horizon in Constrained RL, it leads to underestimation of cost returns (23) under the current policy.
 
@@ -123,9 +124,9 @@ This can lead to constraint violation in the real-environment where the cost obj
 We propose a hyperparameter-based approach to deal with this problem in the [[#5. Model-based PPO Lagrangian]]
 
 
-## Methods
+## 3 Methods
 
-### 5. Model-based PPO Lagrangian
+### 3.1 Model-based PPO Lagrangian
 
 ![image](Paper-Reviews/Constrained%20RL/Model-Based/Model-based%20Safe%20Deep%20Reinforcement%20Learning%20via%20a%20Constrained%20Proximal%20Policy%20Optimization%20Algorithm/imgs/algorithm.png)
 
@@ -155,16 +156,16 @@ The variation of expected cost returns and reward returns with respect to $\beta
 ![image](fig1.png)
 
 
-### Appendix
+### 3.2 Appendix
 
-#### A. Hyper-parameters and finer experimental details
+#### 3.2.1 A. Hyper-parameters and finer experimental details
 
 ![image](hyperparameters.png)
 
 
-## Results & Discussion
+## 4 Results & Discussion
 
-### 6. Experimental Details and Results
+### 4.1 Experimental Details and Results
 
 We test our approach on Safety Gym environments with modified state representations as used in other model-based Safe RL approaches [[🇺🇸 Safe Model-Based Reinforcement Learning with Robust Cross-Entropy Method]].
 
@@ -174,7 +175,7 @@ We compare our approach(MBPPO-Lagrangian) with Unconstrained PPO, Constrained Po
 
 We use [rliable](https://github.com/google-research/rliable) for plotting.
 
-### 7. Conclusions
+### 4.2 Conclusions
 
 Note that we chose the above baselines because they are specifically designed to solve a constrained optimization problem of the same structure as (1)-(3).
 
@@ -193,4 +194,4 @@ The most challenging part of model-based approaches is to learn the environment 
 - Adapt off-policy natrual actor-critic algorithms such as in the setting of constrained MDPs and study their performance both theoretically and empirically.
 
 
-## Critique
+## 5 Critique

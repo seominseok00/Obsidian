@@ -10,6 +10,8 @@ tags:
   - Model-Based
   - arXiv
   - Huawei
+url: https://arxiv.org/abs/2206.09743
+understanding: "4"
 ---
 
 ## The Purpose of This Study

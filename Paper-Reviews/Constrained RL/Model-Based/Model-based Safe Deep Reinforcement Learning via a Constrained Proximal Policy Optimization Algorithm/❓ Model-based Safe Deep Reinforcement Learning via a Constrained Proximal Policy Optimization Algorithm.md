@@ -1,6 +1,6 @@
-### 3. Background
+## 1 Background
 
-#### 3.1 Constrained Markov Decision Process (CMDP)
+### 1.1 Constrained Markov Decision Process (CMDP)
 
 By a policy $\pi = \{\pi_0, \pi_1, \ldots \}$, we mean a decision rule for selecting actions.
 
@@ -18,7 +18,7 @@ Thus, a stationary policy selects actions according to a given distribution rega
 
 학습 알고리즘이 파라미터를 갱신하면서 정책이 바뀌는 것은 $\theta^{(0)}, \theta^{(1)}, \ldots$ 다른 시간 축에서 일어남
 
-#### 3.2 Lagrangian Relaxation based Proximal Policy Optimization
+### 1.2 Lagrangian Relaxation based Proximal Policy Optimization
 
 The Lagrangian of the constrained optimization problem (3) can be written as follows:
 $$
@@ -67,9 +67,9 @@ $i = 1, 2, \sum_k \eta_i(n) = \infty, \sum_k \eta^2_i (n) < \infty$.
 
 충분히 많이 학습해야 하며, 학습률이 발산하지 않고 점점 작아져서 수렴해야 함.
 
-### 4. Challenges in Environment Model Learning
+## 2 Challenges in Environment Model Learning
 
-#### Handling aleatoric and epistemic uncertainties
+### 2.1 Handling aleatoric and epistemic uncertainties
 
 Each neural network's output parameterizes a multivariate normal distribution with diagonal covariance matrix.
 
@@ -78,7 +78,7 @@ Each neural network's output parameterizes a multivariate normal distribution wi
 환경의 다음 상태는 보통 다차원 벡터이므로, multivariate normal distribution을 모델링하는 듯
 
 
-#### Aggregation of Error
+### 2.2 Aggregation of Error
 
 In order to tackle this problem, most of the model-based RL approches use shorter (or truncated) horizon during the policy optimization phase.
 
@@ -94,3 +94,10 @@ GPT의 답변:
 In  [safe-LOOP](https://arxiv.org/abs/2008.10066), approximation of the value function is used to provide long-term reasoning instead of using a truncated horizon.
 
 safe-LOOP에서는 truncated horizon 대신 value function을 사용한다고 하는데, truncated 방식의 설명이 저게 맞는지..?
+
+## 3 Model-based PPO Lagrangian
+
+**Algorithm 1의 7번째 줄에서 모델은 랜덤하게 선택한다는데, ensemble NN은 그럼 언제 사용?**
+
+
+**실제 환경으로 미리 model을 학습해놓고 이후에는 실제 환경과는 상호작용을 안하는건지?**
