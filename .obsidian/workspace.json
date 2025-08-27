@@ -1,0 +1,213 @@
+{
+  "main": {
+    "id": "92560def4c029143",
+    "type": "split",
+    "children": [
+      {
+        "id": "55fcf21c7d14dc27",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8b476ec78d1856f3",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "새 탭"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d3788de12fcc22c8",
+    "type": "split",
+    "children": [
+      {
+        "id": "bca3c866ab5fee1c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "034b5f6ebe89d1f2",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "파일 탐색기"
+            }
+          },
+          {
+            "id": "abc12eb32890a5ae",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "`",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "검색"
+            }
+          },
+          {
+            "id": "740cb1aa82f3dd96",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "북마크"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 296.5110321044922
+  },
+  "right": {
+    "id": "c3fd69288b0e88f1",
+    "type": "split",
+    "children": [
+      {
+        "id": "2519623c110f38ae",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d2315ca4a44be82f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "백링크"
+            }
+          },
+          {
+            "id": "8c93c54e7dccd733",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "나가는 링크"
+            }
+          },
+          {
+            "id": "79c0f6c509883de5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "태그"
+            }
+          },
+          {
+            "id": "bef7c1421b137ff3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Test.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Test 의 개요"
+            }
+          },
+          {
+            "id": "19e88981187a081a",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:빠른 전환기 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
+      "templates:템플릿 삽입": true,
+      "command-palette:명령어 팔레트 열기": true,
+      "bases:새 베이스 생성하기": true,
+      "obsidian42-brat:BRAT": true,
+      "periodic-notes:Open today": false
+    }
+  },
+  "active": "034b5f6ebe89d1f2",
+  "lastOpenFiles": [
+    "Paper-Reviews/Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods/imgs/fig9.png",
+    "Paper-Reviews/Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods/imgs/fig8.png",
+    "Paper-Reviews/Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods/imgs/fig7.png",
+    "Paper-Reviews/Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods/imgs/fig6.png",
+    "Paper-Reviews/Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods/imgs/fig5.png",
+    "Paper-Reviews/Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods/imgs/fig4.png",
+    "Paper-Reviews/Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods/imgs/fig3.png",
+    "Paper-Reviews/Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods/imgs/algorithm2.png",
+    "Paper-Reviews/Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods/imgs/algorithm1.png",
+    "Paper-Reviews/Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods/imgs",
+    "Paper-Reviews/Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods.md",
+    "Paper-Reviews/Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods",
+    "Paper-Reviews/Constrained RL",
+    "Paper-Reviews/ML/Population Based Training of Neural Networks/imgs/pbt.png",
+    "Paper-Reviews/ML/Population Based Training of Neural Networks/imgs",
+    "Paper-Reviews/ML/Population Based Training of Neural Networks/Population Based Training of Neural Networks.md",
+    "Paper-Reviews/ML/Population Based Training of Neural Networks",
+    "Paper-Reviews/ML",
+    "무제",
+    "Daily Notes/2025-08-27.md",
+    "2025-08-27.md",
+    "Template/Paper Review Template.md",
+    "Daily Notes",
+    "Test.md",
+    "Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods.md",
+    "Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods/imgs/fig9.png",
+    "Users/seominseok/Paper/Constrained/ RL/Model-Based/Model-based/ Safe/ Deep/ Reinforcement/ Learning/ via/ a/ Constrained/ Proximal/ Policy/ Optimization/ Algorithm.pdf 2.md",
+    "Users/seominseok/Paper/Constrained/ RL/Model-Based/Model-based/ Safe/ Deep/ Reinforcement/ Learning/ via/ a/ Constrained/ Proximal/ Policy/ Optimization/ Algorithm.pdf 1.md",
+    "Users/seominseok/Paper/Constrained/ RL/Model-Based/Model-based/ Safe/ Deep/ Reinforcement/ Learning/ via/ a/ Constrained/ Proximal/ Policy/ Optimization/ Algorithm.pdf.md",
+    "Users/seominseok/Paper/Constrained/ RL/Model-Based/Model-based/ Safe/ Deep/ Reinforcement/ Learning/ via/ a/ Constrained/ Proximal/ Policy/ Optimization",
+    "Users/seominseok/Paper/Constrained/ RL/Model-Based/Model-based/ Safe/ Deep/ Reinforcement/ Learning/ via/ a/ Constrained/ Proximal/ Policy"
+  ]
+}

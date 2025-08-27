@@ -1,0 +1,15 @@
+/* 제목 가운데 정렬 */
+.canvas-node-content h1,
+.canvas-node-content h2,
+.canvas-node-content h3,
+.canvas-node-content h4,
+.canvas-node-content h5,
+.canvas-node-content h6 {
+    text-align: center;
+}
+
+/* 본문 단락이랑 목록 왼쪽 정렬 */
+.canvas-node-content p,
+.canvas-node-content li {
+    text-align: left;
+}

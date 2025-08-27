@@ -1,0 +1,16 @@
+{
+  "attachmentFolderPath": "attachments",
+  "alwaysUpdateLinks": true,
+  "userIgnoreFilters": [
+    "Today I Learned (TIL)/"
+  ],
+  "promptDelete": false,
+  "showLineNumber": false,
+  "readableLineLength": true,
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
+}
