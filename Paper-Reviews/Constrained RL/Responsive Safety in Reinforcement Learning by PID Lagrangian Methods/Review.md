@@ -15,13 +15,11 @@ proceedings: https://proceedings.mlr.press/v119/stooke20a.html
 pdf: file:///Users/seominseok/Documents/Bookends/Attachments/Responsive%20Safety%20in%20Reinforcement%20Learning%20by%20PID%20Lagrangian%20Methods.pdf
 github: https://github.com/astooke/rlpyt/tree/master/rlpyt/projects/safe
 understanding: "4"
+rating: ★★★★★
 ---
 ## The Purpose of This Study
 
 Lagragne multiplier는 integral control로 업데이트 되기 때문에(제어 이론 관점에서), oscillation·overshoot이 발생
-
-
-## Lit. Review
 
 
 ## Methods
