@@ -1,11 +1,14 @@
 ---
 title: "{{title}}"
-author: 
-published: 
+author:
+published:
 created: "{{date}} {{time}}"
-status: 
-category: 
+status:
+category:
 tags:
+pdf:
+understanding:
+rating:
 ---
 
 ## The Purpose of This Study
