@@ -10,7 +10,6 @@ pdf:
 understanding:
 rating:
 ---
-
 ## The Purpose of This Study
 
 
