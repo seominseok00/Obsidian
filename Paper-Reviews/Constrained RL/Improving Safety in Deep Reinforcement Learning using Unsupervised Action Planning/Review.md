@@ -22,6 +22,9 @@ rating: ★★
 
 ## Methods
 
+![image](imgs/framework.png)
+
+
 ### 3. Safe Reinforcement Learning via Unsupervised Action Planning
 
 ### A. Problem Formulation
