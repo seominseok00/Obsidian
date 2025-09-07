@@ -94,7 +94,23 @@ def forward(self, observation, prev_action, prev_reward, init_rnn_state=None):
 	return outputs
 ```
 
-- [ ] [PPO LSTM](https://github.com/seungeunrho/minimalRL/blob/master/ppo-lstm.py) 코드 분석
+
+cf) forward() 차원 처리: T, B를 미리 파악해놓고 이를 바탕으로 reshape해서 사용
+
+```python
+def infer_leading_dims(tensor, dim):
+    lead_dim = tensor.dim() - dim
+    assert lead_dim in (0, 1, 2)
+    if lead_dim == 2:  # tensor: (seq, batch, hid)
+        T, B = tensor.shape[:2]
+    else:
+        T = 1
+        B = 1 if lead_dim == 0 else tensor.shape[0]  # if: (1, 1, hid), else: (1, batch, hid)
+    shape = tensor.shape[lead_dim:]
+    return lead_dim, T, B, shape
+```
+
+- [x] [PPO LSTM](https://github.com/seungeunrho/minimalRL/blob/master/ppo-lstm.py) 코드 분석 → [[LSTM Data Processing]]
 
 ## Training
 

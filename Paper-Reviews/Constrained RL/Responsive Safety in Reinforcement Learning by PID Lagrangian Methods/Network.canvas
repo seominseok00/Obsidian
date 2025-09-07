@@ -1,21 +1,21 @@
 {
 	"nodes":[
 		{"id":"0ee29965d473b873","type":"group","x":-145,"y":100,"width":290,"height":260,"label":"body"},
-		{"id":"a0c2f52ffe278c50","type":"text","text":"# LSTM(512 + action_size + 1, 512)","x":-218,"y":520,"width":437,"height":60},
-		{"id":"8d02b1cde29be658","type":"text","text":"lstm_inputs = [fc_x, prev_action, prev_reward]","x":280,"y":520,"width":380,"height":60},
 		{"id":"b7800b5408fd25d1","type":"text","text":"# Linear(512, 1)","x":-125,"y":820,"width":250,"height":60},
 		{"id":"37868b43603607f9","type":"text","text":"# Linear(512, 1)","x":280,"y":820,"width":250,"height":60},
 		{"id":"91cd25fa87dbc4b0","type":"text","text":"# Linear(512, action_size)","x":-580,"y":825,"width":339,"height":50},
-		{"id":"a042615cd8b77bbd","type":"text","text":"### lstm_out (512)","x":-92,"y":640,"width":185,"height":60},
 		{"id":"a39bf57ceb59a50a","type":"text","text":"### mu","x":-453,"y":940,"width":85,"height":60},
-		{"id":"0594db29fc52dbfc","type":"text","text":"### v","x":-24,"y":940,"width":50,"height":60},
-		{"id":"9abebfa2999e7349","type":"text","text":"### c","x":376,"y":940,"width":58,"height":60},
 		{"id":"4cbbcca9ed3010da","type":"text","text":"# Input","x":-125,"y":-25,"width":250,"height":60},
 		{"id":"15c62f1d655c66a0","type":"text","text":"# Linear(Input, 512)","x":-125,"y":120,"width":250,"height":60},
 		{"id":"24050665552a7f99","type":"text","text":"# Linear(512, 512)","x":-125,"y":280,"width":250,"height":60},
 		{"id":"efb6b7291c6ddaf4","type":"text","text":"normalize_observation = True","x":160,"y":35,"width":275,"height":50},
+		{"id":"a514cf07f9012c94","type":"text","text":"obs = np.append(obs, self._prev_cost)","x":-164,"y":-160,"width":328,"height":60},
+		{"id":"a0c2f52ffe278c50","type":"text","text":"# LSTM(512 + action_size + 1, 512)","x":-218,"y":520,"width":437,"height":60},
+		{"id":"8d02b1cde29be658","type":"text","text":"lstm_inputs = [fc_x, prev_action, prev_reward]","x":280,"y":520,"width":380,"height":60},
+		{"id":"a042615cd8b77bbd","type":"text","text":"### lstm_out (512)","x":-92,"y":640,"width":185,"height":60},
+		{"id":"0594db29fc52dbfc","type":"text","text":"### v","x":-24,"y":940,"width":50,"height":60},
+		{"id":"9abebfa2999e7349","type":"text","text":"### c","x":376,"y":940,"width":58,"height":60},
 		{"id":"935be91868219ed8","type":"text","text":"### fc_x (512)","x":-72,"y":420,"width":144,"height":60},
-		{"id":"a514cf07f9012c94","x":-164,"y":-160,"width":328,"height":60,"type":"text","text":"obs = np.append(obs, self._prev_cost)"},
 		{"id":"12a3f73532a71e87","type":"text","text":"lstm_skip=True\nfc_x = fc_x + lstm_out","x":-453,"y":610,"width":250,"height":60}
 	],
 	"edges":[
