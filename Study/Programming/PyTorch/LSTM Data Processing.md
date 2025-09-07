@@ -56,3 +56,84 @@ LSTM의 hidden state는 h, c는 위에서 언급한 것처럼 각 시퀀스의 �
 
 
 ![image](imgs/lstm_data_shapes.png)
+
+```python
+def split_to_TB_chunks_torch_with_h0(tensor_dict, episode_steps: int, chunk_T: int, drop_last_incomplete: bool = True, device=None):
+    # 1. Calcualte number of episodes(E) and number of chunks (num_chunks), usable_T
+    Ns = [v.shape[0] for v in tensor_dict.values()]
+    N = Ns[0]  # N: total steps (batch size: episodes * episode_steps)
+    assert all(n == N for n in Ns), "All tensors must share N as first dim."
+    assert N % episode_steps == 0, f"N({N}) must be divisible by episode_steps({episode_steps})."
+    E = N // episode_steps  # E: number of episodes
+
+    if episode_steps % chunk_T != 0:
+        if drop_last_incomplete:
+            """
+            Example: episode_steps=1000, chunk_T=128
+            1000/128=7.8125 → 7 chunks of 128 steps
+            usable_T=7*128=896
+            Remaining 104 steps are discarded.
+            """
+            num_chunks = episode_steps // chunk_T
+            usable_T = num_chunks * chunk_T
+        else:
+            raise ValueError("episode_steps not divisible by chunk_T.")
+    else:
+        """
+        Example: episode_steps=1000, chunk_T=100
+        1000/100=10 → 10 chunks of 100 steps
+        usable_T=1000
+        No steps are discarded.
+        """
+        num_chunks = episode_steps // chunk_T
+        usable_T = episode_steps
+
+    # 2. Except LSTM hidden state, reshape all tensors to (E, num_chunks, chunk_T, feat)
+    arranged = {}
+    keys_feat = []
+
+    for k, v in tensor_dict.items():
+        if k in ('hin_h', 'hin_c'):  # Except LSTM hidden states
+            continue
+        x = v if device is None else v.to(device)
+        if x.ndim == 1:
+            x = x.unsqueeze(-1)  # (N,) -> (N,1) for consistency
+        F = x.shape[-1]  # feature dimension
+        x = x[:E * episode_steps]  # x: (E * episode_steps, F)
+        x = x.view(E, episode_steps, F)  # x: (E, episode_steps, F)
+        x = x[:, :usable_T]  # truncate to usable_T
+        x = x.view(E, num_chunks, chunk_T, F)  # x: (E, num_chunks, chunk_T, F)
+        arranged[k] = x
+        keys_feat.append(k)
+
+    # 3. Prepare initial hidden states h0 for each chunk
+    H = tensor_dict['hin_h'].shape[-1]  # tensor_dict['hin_h']: (N, H)
+    hin_h = (tensor_dict['hin_h'] if device is None else tensor_dict['hin_h'].to(device))[:E*episode_steps]  # hin_h: (E * episode_steps, H)
+    hin_c = (tensor_dict['hin_c'] if device is None else tensor_dict['hin_c'].to(device))[:E*episode_steps]
+    hin_h = hin_h.view(E, episode_steps, H)[:, :usable_T]   # hin_h: (E, episode_steps, H) -> (E, usable_T, H)
+    hin_c = hin_c.view(E, episode_steps, H)[:, :usable_T]
+    # Each chunk's initial hidden state is the hidden state at the chunk's start time
+    starts = torch.arange(start=0, end=usable_T, step=chunk_T, device=hin_h.device)  # starts: (C, )
+    h0_h_all = hin_h.index_select(dim=1, index=starts)  # h0_h_all: (E, num_chunks, H)
+    h0_c_all = hin_c.index_select(dim=1, index=starts)
+
+    # 4. Return each chunk as (T, B, F) + h0
+    out = []
+    for c in range(num_chunks):
+        batch_c = {}
+
+        for k in keys_feat:
+            x = arranged[k][:, c]                 # x: (E, T, F)
+            x = x.permute(1, 0, 2).contiguous()   # x: (T, E=B, F)
+            batch_c[k] = x
+
+        # h0: (num_layers=1, B, H)
+        h0_h = h0_h_all[:, c, :]  # (E, H)
+        h0_c = h0_c_all[:, c, :]  # (E, H)
+        batch_c['h0_h'] = h0_h.unsqueeze(0)  # (1, E=B, H)
+        batch_c['h0_c'] = h0_c.unsqueeze(0)  # (1, E=B, H)
+
+        out.append(batch_c)
+
+    return out
+```
