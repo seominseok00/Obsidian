@@ -10,6 +10,7 @@ tags:
   - Lagrangian-Based
   - Pieter-Abbeel
   - OpenAI
+  - UC-Berkeley
 arXiv: https://arxiv.org/abs/2007.03964
 proceedings: https://proceedings.mlr.press/v119/stooke20a.html
 pdf: file:///Users/seominseok/Documents/Bookends/Attachments/Responsive%20Safety%20in%20Reinforcement%20Learning%20by%20PID%20Lagrangian%20Methods.pdf
