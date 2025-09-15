@@ -100,5 +100,6 @@ $$
 ## Critique
 - Lagrangian relaxation, MDP, CDMP, policy gradient, TRPO, PPO에 대한 설명이 간결하게 잘 돼 있음
 - Performance guarantee bound를 이론적으로 제공
+- Interior-point method의 한계처럼 이 방법 역시도 제약 조건을 만족하는 영역 내에서 업데이트가 이루어진다고 가정하는 듯 (assume feasible iterates - [[Paper-Reviews/Constrained RL/Responsive Safety in Reinforcement Learning by PID Lagrangian Methods/Review|Review]])
 
 - [ ] Performance guarantee bound, Experiments 읽기
