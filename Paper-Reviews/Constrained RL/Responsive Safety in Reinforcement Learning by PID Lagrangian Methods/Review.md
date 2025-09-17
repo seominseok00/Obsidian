@@ -89,7 +89,7 @@ $$
 
 ##### Algorithm 1: Constraint-Controlled Reinforcement Learning
 ![image](imgs/algorithm1.png)
-논문에서는 constraint-controlled PPO(``CPPO)를 제안
+논문에서는 constraint-controlled PPO(`CPPO`)를 제안
 
 #### 5.3 The PID Lagrangian Method
 
