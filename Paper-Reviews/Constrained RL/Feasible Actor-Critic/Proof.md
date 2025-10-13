@@ -9,8 +9,8 @@ tags:
   - Constrained-RL
   - Statewise-Constrained-RL
 pdf: file:///Users/seominseok/Documents/Bookends/Attachments/Feasible%20Actor-Critic.pdf
-understanding:
-rating:
+understanding: "4"
+rating: ★★★
 ---
 ### Proof of Corollary 6
 
@@ -228,8 +228,8 @@ $$
 \begin{equation}
 	\begin{aligned}
 		G^{*}_{\text{exp}} 
-		&\geq \max_{\lambda} G(\lambda, \mathbb{E}_{s} s) \quad \leftarrow \text{(A.8)} \\
-		&\geq \mathbb{E}_{s} \max_{\lambda}[G(\lambda, s)] \quad \leftarrow \text{Lemma 12, concave라서 부등호 방향이 반대} \\
+		&\geq \max_{\lambda} G(\lambda, \mathbb{E}_{s} s) \quad \leftarrow \text{Lemma 12} \\
+		&\geq \mathbb{E}_{s} \max_{\lambda}[G(\lambda, s)] \quad \leftarrow \text{부등호 반대가 맞는거 아닌가?} \\
 		&\geq \mathbb{E}_{s} \max_{\lambda(s)} [G(\lambda(s), s)] \\
 		&\geq G^{*}_{\text{stw}}
 	\end{aligned}

@@ -9,8 +9,8 @@ tags:
   - Constrained-RL
   - Statewise-Constrained-RL
 pdf: file:///Users/seominseok/Documents/Bookends/Attachments/Feasible%20Actor-Critic.pdf
-understanding:
-rating:
+understanding: "4"
+rating: ★★★
 ---
 ## The Purpose of This Study
 Constrained Markov Decision Process (CMDP)
@@ -217,6 +217,11 @@ $$
 *제약 조건을 엄격하게 만족할 경우, Lagrange multiplier가 0이 되므로, primal problem과 dual problem이 같아진다. (strong duality)*
 
 
+### Practical Implementation
+
+primal dual gradient ascent는 수렴 성능이 좋지 않아서(parctically), 정책과 multiplier 업데이트를 서로 다른 스케줄링으로 업데이트
+
+또한 안정성을 향상시키기 위해, cost value function이 constraint threshold에 가까워지면 multiplier network 학습을 시작
 
 ## Results & Discussion
 
