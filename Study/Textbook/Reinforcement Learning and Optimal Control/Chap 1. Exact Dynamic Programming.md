@@ -4,13 +4,13 @@
 
 ## 1.1 Deterministic Dynamic Programming
 
+`finite horizon problems - deterministic problems`
+
 finite horizon problems는 시스템이 finite time steps(stages)$N$에 걸쳐 변화한다.
 
 먼저, 다음 상태 $x_{k + 1}$가 랜덤하지 않게(nonrandomly) 오로지 state $x_k$와 control $u_k$에 의해 결정되는 deterministic system에 대해 다룬다.
 
 ### 1.1.1 Deterministic Problems
-
-`finite horizon problems - deterministic problems`
 
 deterministic DP problem에서 system equation은 다음과 같다.
 
@@ -177,7 +177,6 @@ $$
 이를 Q-factor라고 한다.
 
 > 마찬가지로 [[#^5a8f98]] 의 우변을 다음과 같이 쓸 수 있다.
-> 
 > $$
 > Q^*_k(x_k, u_k) = g_k(x_k, u_k) + J^*_{k + 1}(f_k(x_k, u_k))
 > $$> 
@@ -203,4 +202,81 @@ $$
 
 $$
 Q^*_k(x_k, u_k) = g_k(x_k, u_k) + \min_{u_{k + 1} \in U_{k + 1}(f_k(x_k, u_k))} Q^*_{k + 1}(f_k(x_k, u_k), u_{k + 1})
+$$
+
+
+## 1.2 Stochastic Dynamic Programming
+
+`finite horizon problems - stochastic problems`
+
+stochastic problems에서는 random disturbance $w_k$가 포함된다.
+
+random disturbance는 $x_k, u_k$에 의존할 수 있지만(확률 분포 $P_k(\cdot|x_k, u_k)$에 의해 결정), 이전 step의 외란 $w_{k - 1}, \ldots, w_0$에는 의존하지 않는다.
+
+stochastic finite DP problem에서 system equation은 다음과 같다.
+
+$$
+x_{k + 1} = f_k(x_k, u_k, w_k), \quad k = 0, 1, \ldots, N - 1
+$$
+
+각 step마다 받는 cost는 다음과 같이 정의된다. $g_k(x_k, u_k, w_k)$
+
+**deterministic finite problem과의 중요한 차이점은 최적화하려는 대상이 control sequence가 아니라 policy라는 점이다.**
+
+> deterministic system에서는 state, control이 결정되면 확정적으로 다음 상태가 결정되기 때문에 control sequence를 최적화 했지만, stochastic system에서는 랜덤하게 다음 상태가 결정되므로
+
+
+정책은 states $x_k$를 controls $u_k$로 맵핑하며 $u_k = \mu_k(x_k)$, control constraints를 만족한다. ($\mu_k(x_k) \in U_k(x_k) \; \text{for all} \; x_k \in S_k$)
+
+
+deterministic optimal control problems vs stochastic optimal control problems
+
+- 정책이 control sequences 보다 더 일반적인 개념이다. (확률적 불확실성이 존재할 때, 정책은 상태 $x_k$에 대한 정보를 활용하여 제어 입력 $u_k$를 선택할 수 있기 때문에 이를 통해 cost를 개선할 수 있음 - closed loop)
+- stochastic problems에서는 (무작위성이 있어서) cost function 등 여러 값을 계산할 때 기댓값을 구해야 한다.
+
+$$
+J_\pi(x_0) = \mathbb{E} \left\{ g_N(x_N) + \sum^{N - 1}_{g = 0} g_k(x_k, \mu_k(x_k), w_k) \right\} \quad k = 0, 1, \ldots, N
+$$
+
+random variables $w_k, x_k$ 때문에 기댓값으로 계산해야 한다.
+
+이에 따라 optimal policy는 다음과 같다.
+
+$$
+J_{\pi^*}(x_0) = J^*(x_0) = \min_{\pi \in \Pi} J_\pi(x_0)
+$$
+where $\Pi$ is the set of all admissible policies.
+
+
+##### Finite Horizon Stochastic Dynamic Programming
+
+##### DP Algorithm for Stochastic Finite Horizon Problems
+
+[[#DP Algorithm for Deterministic Finite Horizon Problems]]과 유사한 형태를 갖는다.
+
+terminal cost $J^*_N(x_N) = g_N(x_N)$에서 시작해서
+
+$k = 0,  \ldots, N - 1$일 때
+
+$$
+J^*_k(x_k) = \min_{u_k \in U_k(x_k)} \mathbb{E} \left\{ g_k(x_k, u_k, w_k) + J^*_{k + 1}(f_k(x_k, u_k, w_k)) \right\}
+$$
+
+만약 $u^*_k = \mu^*_k(x_k)$가 각 상태 $x_k$에 대해 우변의 식을 최소화 했다면 policy $\pi^* = \{ \mu^*_0, \ldots, \mu^*_{N - 1} \}$는 optimal이다.
+
+
+deterministic case와 마찬가지로 **중요한 점은 마지막 단계에서 계산된 값 $J^*_0(x_0)$이 optimal cost $J^*(x_0)$와 같다는 것이다.**
+
+
+**Q-Factors for Stochastic Problems**
+
+optimal Q-factors for stochastic problem (deterministic case와 유사하게 정의된다)
+$$
+Q^*_k(x_k, u_k) = \mathbb{E} \left\{ g_k(x_k, u_k, w_k) + J^*_{k + 1}(f_k, (x_k, u_k, w_K)) \right\}
+$$
+
+마찬가지로 DP 알고리즘도 다음과 같이 Q-factors로만 표현할 수 있다.
+
+$$
+Q^*_k(x_k, u_k) = \mathbb{E} \left\{ g_k(x_k, u_k, w_k) + \min_{u_{k + 1} \in U_{k + 1}(f_k(x_k, u_k, w_k))} Q^*_{k + 1}(f_k(x_k, u_k, w_k), u_{k + 1}) \right\}
 $$
